@@ -8,7 +8,7 @@ var canvas_whiteboard_point_1 = require("./canvas-whiteboard-point");
 var canvas_whiteboard_shape_service_1 = require("./shapes/canvas-whiteboard-shape.service");
 var rxjs_1 = require("rxjs");
 var canvas_whiteboard_shape_options_1 = require("./shapes/canvas-whiteboard-shape-options");
-var cloneDeep = require("lodash.cloneDeep");
+var cloneDeep = require("lodash.clonedeep");
 var CanvasWhiteboardComponent = (function () {
     function CanvasWhiteboardComponent(ngZone, _changeDetector, _canvasWhiteboardService, _canvasWhiteboardShapeService) {
         this.ngZone = ngZone;

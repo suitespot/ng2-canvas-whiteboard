@@ -18,7 +18,7 @@ import {CanvasWhiteboardPoint} from "./canvas-whiteboard-point";
 import {CanvasWhiteboardShapeService, INewCanvasWhiteboardShape} from "./shapes/canvas-whiteboard-shape.service";
 import {Observable} from "rxjs";
 import {CanvasWhiteboardShapeOptions} from "./shapes/canvas-whiteboard-shape-options";
-import * as cloneDeep from "lodash.cloneDeep";
+import * as cloneDeep from "lodash.clonedeep";
 
 @Component({
     selector: 'canvas-whiteboard',

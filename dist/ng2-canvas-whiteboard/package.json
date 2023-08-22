@@ -1,0 +1,66 @@
+{
+  "name": "ng2-canvas-whiteboard",
+  "version": "4.0.3",
+  "author": "webfactory",
+  "license": "MIT",
+  "description": "A Canvas component for Angular which supports free drawing.",
+  "keywords": [
+    "angular2",
+    "angular",
+    "angular4",
+    "angular5",
+    "angular6",
+    "angular7",
+    "angular8",
+    "angular9",
+    "angular10",
+    "canvas",
+    "drawing",
+    "touch drawing",
+    "whiteboard",
+    "colorpicker",
+    "canvas colorpicker",
+    "free hand drawing",
+    "shape drawing",
+    "shapes",
+    "premade shapes",
+    "custom shapes",
+    "custom premade shapes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WebFactoryMk/ng2-canvas-whiteboard.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^15.2.9",
+    "@angular/core": "^15.2.9",
+    "rxjs": "^7.8.1"
+  },
+  "dependencies": {
+    "lodash-es": "4.17.21",
+    "tslib": "^2.3.0"
+  },
+  "module": "fesm2015/ng2-canvas-whiteboard.mjs",
+  "es2020": "fesm2020/ng2-canvas-whiteboard.mjs",
+  "esm2020": "esm2020/ng2-canvas-whiteboard.mjs",
+  "fesm2020": "fesm2020/ng2-canvas-whiteboard.mjs",
+  "fesm2015": "fesm2015/ng2-canvas-whiteboard.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/ng2-canvas-whiteboard.mjs",
+      "es2020": "./fesm2020/ng2-canvas-whiteboard.mjs",
+      "es2015": "./fesm2015/ng2-canvas-whiteboard.mjs",
+      "node": "./fesm2015/ng2-canvas-whiteboard.mjs",
+      "default": "./fesm2020/ng2-canvas-whiteboard.mjs"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy in full compilation mode. This is not allowed.\\nPlease delete and rebuild the package with Ivy partial compilation mode, before attempting to publish.\\n')\" && exit 1"
+  }
+}

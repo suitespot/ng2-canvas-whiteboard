@@ -22,5 +22,5 @@ export declare class CanvasWhiteboardColorPickerComponent implements OnInit {
     determineColorFromCanvas(event: any): string;
     selectColor(color: string): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<CanvasWhiteboardColorPickerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<CanvasWhiteboardColorPickerComponent, "canvas-whiteboard-colorpicker", never, { "previewText": "previewText"; "selectedColor": "selectedColor"; "showColorPicker": "showColorPicker"; }, { "onToggleColorPicker": "onToggleColorPicker"; "onColorSelected": "onColorSelected"; "onSecondaryColorSelected": "onSecondaryColorSelected"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CanvasWhiteboardColorPickerComponent, "canvas-whiteboard-colorpicker", never, { "previewText": { "alias": "previewText"; "required": false; }; "selectedColor": { "alias": "selectedColor"; "required": false; }; "showColorPicker": { "alias": "showColorPicker"; "required": false; }; }, { "onToggleColorPicker": "onToggleColorPicker"; "onColorSelected": "onColorSelected"; "onSecondaryColorSelected": "onSecondaryColorSelected"; }, never, never, false, never>;
 }

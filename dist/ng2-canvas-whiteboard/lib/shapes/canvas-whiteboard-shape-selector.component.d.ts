@@ -18,5 +18,5 @@ export declare class CanvasWhiteboardShapeSelectorComponent {
     closeOnExternalClick(event: any): void;
     toggleShapeSelector(event: Event): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<CanvasWhiteboardShapeSelectorComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<CanvasWhiteboardShapeSelectorComponent, "canvas-whiteboard-shape-selector", never, { "showShapeSelector": "showShapeSelector"; "selectedShapeConstructor": "selectedShapeConstructor"; "shapeOptions": "shapeOptions"; }, { "onToggleShapeSelector": "onToggleShapeSelector"; "onShapeSelected": "onShapeSelected"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CanvasWhiteboardShapeSelectorComponent, "canvas-whiteboard-shape-selector", never, { "showShapeSelector": { "alias": "showShapeSelector"; "required": false; }; "selectedShapeConstructor": { "alias": "selectedShapeConstructor"; "required": false; }; "shapeOptions": { "alias": "shapeOptions"; "required": false; }; }, { "onToggleShapeSelector": "onToggleShapeSelector"; "onShapeSelected": "onShapeSelected"; }, never, never, false, never>;
 }

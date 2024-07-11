@@ -47,6 +47,99 @@ class CanvasWhiteboardUpdate {
     }
 }
 
+const DEFAULT_STYLES = `
+.canvas_whiteboard_button {
+    display: inline-block;
+    outline: 0px;
+    padding-top: 7px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.canvas_whiteboard_buttons {
+    z-index: 3;
+}
+
+@media (max-width: 400px) {
+     .canvas_whiteboard_buttons {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            text-align: center;
+      }
+}
+
+@media (min-width: 401px) {
+    .canvas_whiteboard_buttons {
+        position: absolute;
+        right: 0%;
+        color: #fff;
+    }
+}
+
+.canvas_whiteboard_buttons {
+    padding: 5px;
+}
+
+.canvas_whiteboard_buttons > button {
+    margin: 5px;
+}
+
+.canvas_whiteboard_button-draw_animated {
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+    0% {
+        -webkit-transform: scale(0.1, 0.1);
+        opacity: 0.0;
+    }
+    50% {
+        opacity: 1.0;
+    }
+    100% {
+        -webkit-transform: scale(1.2, 1.2);
+        opacity: 0.0;
+    }
+}
+.canvas_wrapper_div {
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid #e2e2e2;
+}
+
+.canvas_whiteboard_button-clear {
+    padding-top: 5px;
+}
+
+.canvas_whiteboard {
+    position: absolute;
+    z-index: 1;
+}
+
+.incomplete_shapes_canvas_whiteboard {
+    position: absolute;
+    z-index: 2;
+}
+
+`;
+
 class CanvasWhiteboardPoint {
     constructor(x, y) {
         this.x = x;
@@ -88,14 +181,12 @@ class CanvasWhiteboardService {
     redoCanvas(updateUUD) {
         this._canvasRedoSubject.next(updateUUD);
     }
+    static { this.ɵfac = function CanvasWhiteboardService_Factory(t) { return new (t || CanvasWhiteboardService)(); }; }
+    static { this.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: CanvasWhiteboardService, factory: CanvasWhiteboardService.ɵfac }); }
 }
-CanvasWhiteboardService.ɵfac = function CanvasWhiteboardService_Factory(t) { return new (t || CanvasWhiteboardService)(); };
-CanvasWhiteboardService.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: CanvasWhiteboardService, factory: CanvasWhiteboardService.ɵfac });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardService, [{
-            type: Injectable
-        }], null, null);
-})();
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardService, [{
+        type: Injectable
+    }], null, null); })();
 
 class CanvasWhiteboardShape {
     constructor(positionPoint, options) {
@@ -392,14 +483,12 @@ class CanvasWhiteboardShapeService {
     unregisterShapes(shapes) {
         this.registeredShapesSubject.next(this.getCurrentRegisteredShapes().filter(shape => shapes.indexOf(shape) === -1));
     }
+    static { this.ɵfac = function CanvasWhiteboardShapeService_Factory(t) { return new (t || CanvasWhiteboardShapeService)(); }; }
+    static { this.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: CanvasWhiteboardShapeService, factory: CanvasWhiteboardShapeService.ɵfac }); }
 }
-CanvasWhiteboardShapeService.ɵfac = function CanvasWhiteboardShapeService_Factory(t) { return new (t || CanvasWhiteboardShapeService)(); };
-CanvasWhiteboardShapeService.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: CanvasWhiteboardShapeService, factory: CanvasWhiteboardShapeService.ɵfac });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardShapeService, [{
-            type: Injectable
-        }], function () { return []; }, null);
-})();
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardShapeService, [{
+        type: Injectable
+    }], function () { return []; }, null); })();
 
 const _c0$2 = ["canvaswhiteboardcolorpicker"];
 class CanvasWhiteboardColorPickerComponent {
@@ -458,22 +547,15 @@ class CanvasWhiteboardColorPickerComponent {
         this.onColorSelected.emit(color);
         this.toggleColorPicker(null);
     }
-}
-CanvasWhiteboardColorPickerComponent.ɵfac = function CanvasWhiteboardColorPickerComponent_Factory(t) { return new (t || CanvasWhiteboardColorPickerComponent)(i0.ɵɵdirectiveInject(i0.ElementRef)); };
-CanvasWhiteboardColorPickerComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardColorPickerComponent, selectors: [["canvas-whiteboard-colorpicker"]], viewQuery: function CanvasWhiteboardColorPickerComponent_Query(rf, ctx) {
-        if (rf & 1) {
+    static { this.ɵfac = function CanvasWhiteboardColorPickerComponent_Factory(t) { return new (t || CanvasWhiteboardColorPickerComponent)(i0.ɵɵdirectiveInject(i0.ElementRef)); }; }
+    static { this.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardColorPickerComponent, selectors: [["canvas-whiteboard-colorpicker"]], viewQuery: function CanvasWhiteboardColorPickerComponent_Query(rf, ctx) { if (rf & 1) {
             i0.ɵɵviewQuery(_c0$2, 7);
-        }
-        if (rf & 2) {
+        } if (rf & 2) {
             let _t;
             i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.canvas = _t.first);
-        }
-    }, hostBindings: function CanvasWhiteboardColorPickerComponent_HostBindings(rf, ctx) {
-        if (rf & 1) {
+        } }, hostBindings: function CanvasWhiteboardColorPickerComponent_HostBindings(rf, ctx) { if (rf & 1) {
             i0.ɵɵlistener("mousedown", function CanvasWhiteboardColorPickerComponent_mousedown_HostBindingHandler($event) { return ctx.closeOnExternalClick($event); }, false, i0.ɵɵresolveDocument)("touchstart", function CanvasWhiteboardColorPickerComponent_touchstart_HostBindingHandler($event) { return ctx.closeOnExternalClick($event); }, false, i0.ɵɵresolveDocument);
-        }
-    }, inputs: { previewText: "previewText", selectedColor: "selectedColor", showColorPicker: "showColorPicker" }, outputs: { onToggleColorPicker: "onToggleColorPicker", onColorSelected: "onColorSelected", onSecondaryColorSelected: "onSecondaryColorSelected" }, decls: 9, vars: 5, consts: [[1, "canvas-whiteboard-colorpicker-input", 3, "hidden", "click"], [1, "selected-color-type-wrapper"], [1, "selected-color-preview"], [1, "canvas-whiteboard-colorpicker-wrapper", 3, "hidden"], [1, "transparent-color", 3, "click"], ["width", "284", "height", "155", 1, "canvas-whiteboard-colorpicker", 3, "click"], ["canvaswhiteboardcolorpicker", ""]], template: function CanvasWhiteboardColorPickerComponent_Template(rf, ctx) {
-        if (rf & 1) {
+        } }, inputs: { previewText: "previewText", selectedColor: "selectedColor", showColorPicker: "showColorPicker" }, outputs: { onToggleColorPicker: "onToggleColorPicker", onColorSelected: "onColorSelected", onSecondaryColorSelected: "onSecondaryColorSelected" }, decls: 9, vars: 5, consts: [[1, "canvas-whiteboard-colorpicker-input", 3, "hidden", "click"], [1, "selected-color-type-wrapper"], [1, "selected-color-preview"], [1, "canvas-whiteboard-colorpicker-wrapper", 3, "hidden"], [1, "transparent-color", 3, "click"], ["width", "284", "height", "155", 1, "canvas-whiteboard-colorpicker", 3, "click"], ["canvaswhiteboardcolorpicker", ""]], template: function CanvasWhiteboardColorPickerComponent_Template(rf, ctx) { if (rf & 1) {
             i0.ɵɵelementStart(0, "div", 0);
             i0.ɵɵlistener("click", function CanvasWhiteboardColorPickerComponent_Template_div_click_0_listener($event) { return ctx.toggleColorPicker($event); });
             i0.ɵɵelementStart(1, "div", 1);
@@ -488,8 +570,7 @@ CanvasWhiteboardColorPickerComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponen
             i0.ɵɵelementStart(7, "canvas", 5, 6);
             i0.ɵɵlistener("click", function CanvasWhiteboardColorPickerComponent_Template_canvas_click_7_listener($event) { return ctx.selectColor(ctx.determineColorFromCanvas($event)); });
             i0.ɵɵelementEnd()();
-        }
-        if (rf & 2) {
+        } if (rf & 2) {
             i0.ɵɵproperty("hidden", ctx.showColorPicker);
             i0.ɵɵadvance(2);
             i0.ɵɵtextInterpolate(ctx.previewText);
@@ -497,15 +578,14 @@ CanvasWhiteboardColorPickerComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponen
             i0.ɵɵstyleProp("background", ctx.selectedColor);
             i0.ɵɵadvance(1);
             i0.ɵɵproperty("hidden", !ctx.showColorPicker);
-        }
-    }, styles: [".selected-color-preview[_ngcontent-%COMP%]{width:100%;height:20%;position:absolute;bottom:0;left:0}.selected-color-type-wrapper[_ngcontent-%COMP%]{display:inline-block;height:100%;width:100%;text-align:center;font-size:14px;color:#000}.transparent-color[_ngcontent-%COMP%]{font-size:14px}.canvas-whiteboard-colorpicker-wrapper[_ngcontent-%COMP%]{border:1px solid #afafaf;color:#000}@media (min-width: 401px){.canvas-whiteboard-colorpicker-wrapper[_ngcontent-%COMP%]{position:absolute}}.canvas-whiteboard-colorpicker-input[_ngcontent-%COMP%]{display:inline-block;position:relative;width:44px;height:44px;margin:5px;cursor:pointer;color:#000}"] });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardColorPickerComponent, [{
-            type: Component,
-            args: [{ selector: 'canvas-whiteboard-colorpicker', host: {
-                        '(document:mousedown)': 'closeOnExternalClick($event)',
-                        '(document:touchstart)': 'closeOnExternalClick($event)'
-                    }, template: `
+        } }, styles: [".selected-color-preview[_ngcontent-%COMP%]{width:100%;height:20%;position:absolute;bottom:0;left:0}.selected-color-type-wrapper[_ngcontent-%COMP%]{display:inline-block;height:100%;width:100%;text-align:center;font-size:14px;color:#000}.transparent-color[_ngcontent-%COMP%]{font-size:14px}.canvas-whiteboard-colorpicker-wrapper[_ngcontent-%COMP%]{border:1px solid #afafaf;color:#000}@media (min-width: 401px){.canvas-whiteboard-colorpicker-wrapper[_ngcontent-%COMP%]{position:absolute}}.canvas-whiteboard-colorpicker-input[_ngcontent-%COMP%]{display:inline-block;position:relative;width:44px;height:44px;margin:5px;cursor:pointer;color:#000}"] }); }
+}
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardColorPickerComponent, [{
+        type: Component,
+        args: [{ selector: 'canvas-whiteboard-colorpicker', host: {
+                    '(document:mousedown)': 'closeOnExternalClick($event)',
+                    '(document:touchstart)': 'closeOnExternalClick($event)'
+                }, template: `
     <div [hidden]="showColorPicker" class="canvas-whiteboard-colorpicker-input"
          (click)="toggleColorPicker($event)">
       <div class="selected-color-type-wrapper">{{previewText}}</div>
@@ -517,23 +597,22 @@ CanvasWhiteboardColorPickerComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponen
               (click)="selectColor(determineColorFromCanvas($event))"></canvas>
     </div>
   `, styles: [".selected-color-preview{width:100%;height:20%;position:absolute;bottom:0;left:0}.selected-color-type-wrapper{display:inline-block;height:100%;width:100%;text-align:center;font-size:14px;color:#000}.transparent-color{font-size:14px}.canvas-whiteboard-colorpicker-wrapper{border:1px solid #afafaf;color:#000}@media (min-width: 401px){.canvas-whiteboard-colorpicker-wrapper{position:absolute}}.canvas-whiteboard-colorpicker-input{display:inline-block;position:relative;width:44px;height:44px;margin:5px;cursor:pointer;color:#000}\n"] }]
-        }], function () { return [{ type: i0.ElementRef }]; }, { previewText: [{
-                type: Input
-            }], selectedColor: [{
-                type: Input
-            }], canvas: [{
-                type: ViewChild,
-                args: ['canvaswhiteboardcolorpicker', { static: true }]
-            }], showColorPicker: [{
-                type: Input
-            }], onToggleColorPicker: [{
-                type: Output
-            }], onColorSelected: [{
-                type: Output
-            }], onSecondaryColorSelected: [{
-                type: Output
-            }] });
-})();
+    }], function () { return [{ type: i0.ElementRef }]; }, { previewText: [{
+            type: Input
+        }], selectedColor: [{
+            type: Input
+        }], canvas: [{
+            type: ViewChild,
+            args: ['canvaswhiteboardcolorpicker', { static: true }]
+        }], showColorPicker: [{
+            type: Input
+        }], onToggleColorPicker: [{
+            type: Output
+        }], onColorSelected: [{
+            type: Output
+        }], onSecondaryColorSelected: [{
+            type: Output
+        }] }); })();
 
 const _c0$1 = ["canvasWhiteboardShapePreview"];
 class CanvasWhiteboardShapePreviewComponent {
@@ -554,78 +633,62 @@ class CanvasWhiteboardShapePreviewComponent {
         const concreteShape = new this.shapeConstructor(new CanvasWhiteboardPoint(0, 0), Object.assign(new CanvasWhiteboardShapeOptions(), this.shapeOptions));
         concreteShape.drawPreview(context);
     }
-}
-CanvasWhiteboardShapePreviewComponent.ɵfac = function CanvasWhiteboardShapePreviewComponent_Factory(t) { return new (t || CanvasWhiteboardShapePreviewComponent)(); };
-CanvasWhiteboardShapePreviewComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardShapePreviewComponent, selectors: [["canvas-whiteboard-shape-preview"]], viewQuery: function CanvasWhiteboardShapePreviewComponent_Query(rf, ctx) {
-        if (rf & 1) {
+    static { this.ɵfac = function CanvasWhiteboardShapePreviewComponent_Factory(t) { return new (t || CanvasWhiteboardShapePreviewComponent)(); }; }
+    static { this.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardShapePreviewComponent, selectors: [["canvas-whiteboard-shape-preview"]], viewQuery: function CanvasWhiteboardShapePreviewComponent_Query(rf, ctx) { if (rf & 1) {
             i0.ɵɵviewQuery(_c0$1, 5);
-        }
-        if (rf & 2) {
+        } if (rf & 2) {
             let _t;
             i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.canvas = _t.first);
-        }
-    }, inputs: { shapeConstructor: "shapeConstructor", shapeOptions: "shapeOptions" }, features: [i0.ɵɵNgOnChangesFeature], decls: 2, vars: 0, consts: [["width", "50px", "height", "50px", 1, "canvas-whiteboard-shape-preview-canvas"], ["canvasWhiteboardShapePreview", ""]], template: function CanvasWhiteboardShapePreviewComponent_Template(rf, ctx) {
-        if (rf & 1) {
+        } }, inputs: { shapeConstructor: "shapeConstructor", shapeOptions: "shapeOptions" }, features: [i0.ɵɵNgOnChangesFeature], decls: 2, vars: 0, consts: [["width", "50px", "height", "50px", 1, "canvas-whiteboard-shape-preview-canvas"], ["canvasWhiteboardShapePreview", ""]], template: function CanvasWhiteboardShapePreviewComponent_Template(rf, ctx) { if (rf & 1) {
             i0.ɵɵelement(0, "canvas", 0, 1);
-        }
-    }, styles: [".canvas-whiteboard-shape-preview-canvas[_ngcontent-%COMP%]{cursor:pointer}"] });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardShapePreviewComponent, [{
-            type: Component,
-            args: [{ selector: 'canvas-whiteboard-shape-preview', template: `
+        } }, styles: [".canvas-whiteboard-shape-preview-canvas[_ngcontent-%COMP%]{cursor:pointer}"] }); }
+}
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardShapePreviewComponent, [{
+        type: Component,
+        args: [{ selector: 'canvas-whiteboard-shape-preview', template: `
     <canvas #canvasWhiteboardShapePreview width="50px" height="50px"
             class="canvas-whiteboard-shape-preview-canvas"></canvas>
   `, styles: [".canvas-whiteboard-shape-preview-canvas{cursor:pointer}\n"] }]
-        }], null, { shapeConstructor: [{
-                type: Input
-            }], shapeOptions: [{
-                type: Input
-            }], canvas: [{
-                type: ViewChild,
-                args: ['canvasWhiteboardShapePreview']
-            }] });
-})();
+    }], null, { shapeConstructor: [{
+            type: Input
+        }], shapeOptions: [{
+            type: Input
+        }], canvas: [{
+            type: ViewChild,
+            args: ['canvasWhiteboardShapePreview']
+        }] }); })();
 
-function CanvasWhiteboardShapeSelectorComponent_div_0_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r3 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "div", 2);
-        i0.ɵɵlistener("click", function CanvasWhiteboardShapeSelectorComponent_div_0_Template_div_click_0_listener($event) { i0.ɵɵrestoreView(_r3); const ctx_r2 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r2.toggleShapeSelector($event)); });
-        i0.ɵɵelement(1, "canvas-whiteboard-shape-preview", 3);
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r0 = i0.ɵɵnextContext();
-        i0.ɵɵadvance(1);
-        i0.ɵɵproperty("shapeConstructor", ctx_r0.selectedShapeConstructor)("shapeOptions", ctx_r0.shapeOptions);
-    }
-}
-function CanvasWhiteboardShapeSelectorComponent_div_1_canvas_whiteboard_shape_preview_1_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r7 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "canvas-whiteboard-shape-preview", 6);
-        i0.ɵɵlistener("click", function CanvasWhiteboardShapeSelectorComponent_div_1_canvas_whiteboard_shape_preview_1_Template_canvas_whiteboard_shape_preview_click_0_listener() { const restoredCtx = i0.ɵɵrestoreView(_r7); const shapeConstructor_r5 = restoredCtx.$implicit; const ctx_r6 = i0.ɵɵnextContext(2); return i0.ɵɵresetView(ctx_r6.selectShape(shapeConstructor_r5)); });
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const shapeConstructor_r5 = ctx.$implicit;
-        const ctx_r4 = i0.ɵɵnextContext(2);
-        i0.ɵɵproperty("shapeConstructor", shapeConstructor_r5)("shapeOptions", ctx_r4.shapeOptions);
-    }
-}
-function CanvasWhiteboardShapeSelectorComponent_div_1_Template(rf, ctx) {
-    if (rf & 1) {
-        i0.ɵɵelementStart(0, "div", 4);
-        i0.ɵɵtemplate(1, CanvasWhiteboardShapeSelectorComponent_div_1_canvas_whiteboard_shape_preview_1_Template, 1, 2, "canvas-whiteboard-shape-preview", 5);
-        i0.ɵɵpipe(2, "async");
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r1 = i0.ɵɵnextContext();
-        i0.ɵɵadvance(1);
-        i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind1(2, 1, ctx_r1.registeredShapes$));
-    }
-}
+function CanvasWhiteboardShapeSelectorComponent_div_0_Template(rf, ctx) { if (rf & 1) {
+    const _r3 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "div", 2);
+    i0.ɵɵlistener("click", function CanvasWhiteboardShapeSelectorComponent_div_0_Template_div_click_0_listener($event) { i0.ɵɵrestoreView(_r3); const ctx_r2 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r2.toggleShapeSelector($event)); });
+    i0.ɵɵelement(1, "canvas-whiteboard-shape-preview", 3);
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r0 = i0.ɵɵnextContext();
+    i0.ɵɵadvance(1);
+    i0.ɵɵproperty("shapeConstructor", ctx_r0.selectedShapeConstructor)("shapeOptions", ctx_r0.shapeOptions);
+} }
+function CanvasWhiteboardShapeSelectorComponent_div_1_canvas_whiteboard_shape_preview_1_Template(rf, ctx) { if (rf & 1) {
+    const _r7 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "canvas-whiteboard-shape-preview", 6);
+    i0.ɵɵlistener("click", function CanvasWhiteboardShapeSelectorComponent_div_1_canvas_whiteboard_shape_preview_1_Template_canvas_whiteboard_shape_preview_click_0_listener() { const restoredCtx = i0.ɵɵrestoreView(_r7); const shapeConstructor_r5 = restoredCtx.$implicit; const ctx_r6 = i0.ɵɵnextContext(2); return i0.ɵɵresetView(ctx_r6.selectShape(shapeConstructor_r5)); });
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const shapeConstructor_r5 = ctx.$implicit;
+    const ctx_r4 = i0.ɵɵnextContext(2);
+    i0.ɵɵproperty("shapeConstructor", shapeConstructor_r5)("shapeOptions", ctx_r4.shapeOptions);
+} }
+function CanvasWhiteboardShapeSelectorComponent_div_1_Template(rf, ctx) { if (rf & 1) {
+    i0.ɵɵelementStart(0, "div", 4);
+    i0.ɵɵtemplate(1, CanvasWhiteboardShapeSelectorComponent_div_1_canvas_whiteboard_shape_preview_1_Template, 1, 2, "canvas-whiteboard-shape-preview", 5);
+    i0.ɵɵpipe(2, "async");
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r1 = i0.ɵɵnextContext();
+    i0.ɵɵadvance(1);
+    i0.ɵɵproperty("ngForOf", i0.ɵɵpipeBind1(2, 1, ctx_r1.registeredShapes$));
+} }
 class CanvasWhiteboardShapeSelectorComponent {
     constructor(elementRef, canvasWhiteboardShapeService) {
         this.elementRef = elementRef;
@@ -650,30 +713,24 @@ class CanvasWhiteboardShapeSelectorComponent {
         }
         this.onToggleShapeSelector.emit(!this.showShapeSelector);
     }
-}
-CanvasWhiteboardShapeSelectorComponent.ɵfac = function CanvasWhiteboardShapeSelectorComponent_Factory(t) { return new (t || CanvasWhiteboardShapeSelectorComponent)(i0.ɵɵdirectiveInject(i0.ElementRef), i0.ɵɵdirectiveInject(CanvasWhiteboardShapeService)); };
-CanvasWhiteboardShapeSelectorComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardShapeSelectorComponent, selectors: [["canvas-whiteboard-shape-selector"]], hostBindings: function CanvasWhiteboardShapeSelectorComponent_HostBindings(rf, ctx) {
-        if (rf & 1) {
+    static { this.ɵfac = function CanvasWhiteboardShapeSelectorComponent_Factory(t) { return new (t || CanvasWhiteboardShapeSelectorComponent)(i0.ɵɵdirectiveInject(i0.ElementRef), i0.ɵɵdirectiveInject(CanvasWhiteboardShapeService)); }; }
+    static { this.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardShapeSelectorComponent, selectors: [["canvas-whiteboard-shape-selector"]], hostBindings: function CanvasWhiteboardShapeSelectorComponent_HostBindings(rf, ctx) { if (rf & 1) {
             i0.ɵɵlistener("mousedown", function CanvasWhiteboardShapeSelectorComponent_mousedown_HostBindingHandler($event) { return ctx.closeOnExternalClick($event); }, false, i0.ɵɵresolveDocument)("touchstart", function CanvasWhiteboardShapeSelectorComponent_touchstart_HostBindingHandler($event) { return ctx.closeOnExternalClick($event); }, false, i0.ɵɵresolveDocument);
-        }
-    }, inputs: { showShapeSelector: "showShapeSelector", selectedShapeConstructor: "selectedShapeConstructor", shapeOptions: "shapeOptions" }, outputs: { onToggleShapeSelector: "onToggleShapeSelector", onShapeSelected: "onShapeSelected" }, decls: 2, vars: 2, consts: [["class", "canvas-whiteboard-shape-selector-selected-preview", 3, "click", 4, "ngIf"], ["class", "canvas-whiteboard-shape-selector-wrapper", 4, "ngIf"], [1, "canvas-whiteboard-shape-selector-selected-preview", 3, "click"], [3, "shapeConstructor", "shapeOptions"], [1, "canvas-whiteboard-shape-selector-wrapper"], [3, "shapeConstructor", "shapeOptions", "click", 4, "ngFor", "ngForOf"], [3, "shapeConstructor", "shapeOptions", "click"]], template: function CanvasWhiteboardShapeSelectorComponent_Template(rf, ctx) {
-        if (rf & 1) {
+        } }, inputs: { showShapeSelector: "showShapeSelector", selectedShapeConstructor: "selectedShapeConstructor", shapeOptions: "shapeOptions" }, outputs: { onToggleShapeSelector: "onToggleShapeSelector", onShapeSelected: "onShapeSelected" }, decls: 2, vars: 2, consts: [["class", "canvas-whiteboard-shape-selector-selected-preview", 3, "click", 4, "ngIf"], ["class", "canvas-whiteboard-shape-selector-wrapper", 4, "ngIf"], [1, "canvas-whiteboard-shape-selector-selected-preview", 3, "click"], [3, "shapeConstructor", "shapeOptions"], [1, "canvas-whiteboard-shape-selector-wrapper"], [3, "shapeConstructor", "shapeOptions", "click", 4, "ngFor", "ngForOf"], [3, "shapeConstructor", "shapeOptions", "click"]], template: function CanvasWhiteboardShapeSelectorComponent_Template(rf, ctx) { if (rf & 1) {
             i0.ɵɵtemplate(0, CanvasWhiteboardShapeSelectorComponent_div_0_Template, 2, 2, "div", 0);
             i0.ɵɵtemplate(1, CanvasWhiteboardShapeSelectorComponent_div_1_Template, 3, 3, "div", 1);
-        }
-        if (rf & 2) {
+        } if (rf & 2) {
             i0.ɵɵproperty("ngIf", !ctx.showShapeSelector);
             i0.ɵɵadvance(1);
             i0.ɵɵproperty("ngIf", ctx.showShapeSelector);
-        }
-    }, dependencies: [i2.NgForOf, i2.NgIf, CanvasWhiteboardShapePreviewComponent, i2.AsyncPipe], styles: [".canvas-whiteboard-shape-selector-selected-preview[_ngcontent-%COMP%]{vertical-align:bottom;display:inline-block}.canvas-whiteboard-shape-selector-wrapper[_ngcontent-%COMP%]{display:block;padding:4px;border:1px solid #afafaf}"] });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardShapeSelectorComponent, [{
-            type: Component,
-            args: [{ selector: 'canvas-whiteboard-shape-selector', host: {
-                        '(document:mousedown)': 'closeOnExternalClick($event)',
-                        '(document:touchstart)': 'closeOnExternalClick($event)'
-                    }, template: `
+        } }, dependencies: [i2.NgForOf, i2.NgIf, CanvasWhiteboardShapePreviewComponent, i2.AsyncPipe], styles: [".canvas-whiteboard-shape-selector-selected-preview[_ngcontent-%COMP%]{vertical-align:bottom;display:inline-block}.canvas-whiteboard-shape-selector-wrapper[_ngcontent-%COMP%]{display:block;padding:4px;border:1px solid #afafaf}"] }); }
+}
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardShapeSelectorComponent, [{
+        type: Component,
+        args: [{ selector: 'canvas-whiteboard-shape-selector', host: {
+                    '(document:mousedown)': 'closeOnExternalClick($event)',
+                    '(document:touchstart)': 'closeOnExternalClick($event)'
+                }, template: `
     <div *ngIf="!showShapeSelector" (click)="toggleShapeSelector($event)"
          class="canvas-whiteboard-shape-selector-selected-preview">
       <canvas-whiteboard-shape-preview [shapeConstructor]="selectedShapeConstructor"
@@ -686,143 +743,118 @@ CanvasWhiteboardShapeSelectorComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineCompon
                                        (click)="selectShape(shapeConstructor)"></canvas-whiteboard-shape-preview>
     </div>
   `, styles: [".canvas-whiteboard-shape-selector-selected-preview{vertical-align:bottom;display:inline-block}.canvas-whiteboard-shape-selector-wrapper{display:block;padding:4px;border:1px solid #afafaf}\n"] }]
-        }], function () { return [{ type: i0.ElementRef }, { type: CanvasWhiteboardShapeService }]; }, { showShapeSelector: [{
-                type: Input
-            }], selectedShapeConstructor: [{
-                type: Input
-            }], shapeOptions: [{
-                type: Input
-            }], onToggleShapeSelector: [{
-                type: Output
-            }], onShapeSelected: [{
-                type: Output
-            }] });
-})();
+    }], function () { return [{ type: i0.ElementRef }, { type: CanvasWhiteboardShapeService }]; }, { showShapeSelector: [{
+            type: Input
+        }], selectedShapeConstructor: [{
+            type: Input
+        }], shapeOptions: [{
+            type: Input
+        }], onToggleShapeSelector: [{
+            type: Output
+        }], onShapeSelected: [{
+            type: Output
+        }] }); })();
 
 const _c0 = ["canvas"];
 const _c1 = ["incompleteShapesCanvas"];
-function CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r11 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "canvas-whiteboard-shape-selector", 13);
-        i0.ɵɵlistener("onToggleShapeSelector", function CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template_canvas_whiteboard_shape_selector_onToggleShapeSelector_0_listener($event) { i0.ɵɵrestoreView(_r11); const ctx_r10 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r10.toggleShapeSelector($event)); })("onShapeSelected", function CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template_canvas_whiteboard_shape_selector_onShapeSelected_0_listener($event) { i0.ɵɵrestoreView(_r11); const ctx_r12 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r12.selectShape($event)); });
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r0 = i0.ɵɵnextContext();
-        i0.ɵɵproperty("showShapeSelector", ctx_r0.showShapeSelector)("selectedShapeConstructor", ctx_r0.selectedShapeConstructor)("shapeOptions", ctx_r0.generateShapePreviewOptions());
-    }
-}
-function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r14 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "canvas-whiteboard-colorpicker", 14);
-        i0.ɵɵlistener("onToggleColorPicker", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template_canvas_whiteboard_colorpicker_onToggleColorPicker_0_listener($event) { i0.ɵɵrestoreView(_r14); const ctx_r13 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r13.toggleFillColorPicker($event)); })("onColorSelected", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template_canvas_whiteboard_colorpicker_onColorSelected_0_listener($event) { i0.ɵɵrestoreView(_r14); const ctx_r15 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r15.changeFillColor($event)); });
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r1 = i0.ɵɵnextContext();
-        i0.ɵɵproperty("previewText", ctx_r1.fillColorPickerText)("showColorPicker", ctx_r1.showFillColorPicker)("selectedColor", ctx_r1.fillColor);
-    }
-}
-function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_4_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r17 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "canvas-whiteboard-colorpicker", 14);
-        i0.ɵɵlistener("onToggleColorPicker", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_4_Template_canvas_whiteboard_colorpicker_onToggleColorPicker_0_listener($event) { i0.ɵɵrestoreView(_r17); const ctx_r16 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r16.toggleStrokeColorPicker($event)); })("onColorSelected", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_4_Template_canvas_whiteboard_colorpicker_onColorSelected_0_listener($event) { i0.ɵɵrestoreView(_r17); const ctx_r18 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r18.changeStrokeColor($event)); });
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r2 = i0.ɵɵnextContext();
-        i0.ɵɵproperty("previewText", ctx_r2.strokeColorPickerText)("showColorPicker", ctx_r2.showStrokeColorPicker)("selectedColor", ctx_r2.strokeColor);
-    }
-}
-function CanvasWhiteboardComponent_button_5_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r20 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "button", 15);
-        i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_5_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r20); const ctx_r19 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r19.toggleDrawingEnabled()); });
-        i0.ɵɵelement(1, "i", 16);
-        i0.ɵɵtext(2);
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r3 = i0.ɵɵnextContext();
-        i0.ɵɵclassProp("canvas_whiteboard_button-draw_animated", ctx_r3.getDrawingEnabled());
-        i0.ɵɵadvance(1);
-        i0.ɵɵclassMap(ctx_r3.drawButtonClass);
-        i0.ɵɵadvance(1);
-        i0.ɵɵtextInterpolate1(" ", ctx_r3.drawButtonText, " ");
-    }
-}
-function CanvasWhiteboardComponent_button_6_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r22 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "button", 17);
-        i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_6_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r22); const ctx_r21 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r21.clearCanvasLocal()); });
-        i0.ɵɵelement(1, "i", 16);
-        i0.ɵɵtext(2);
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r4 = i0.ɵɵnextContext();
-        i0.ɵɵadvance(1);
-        i0.ɵɵclassMap(ctx_r4.clearButtonClass);
-        i0.ɵɵadvance(1);
-        i0.ɵɵtextInterpolate1(" ", ctx_r4.clearButtonText, " ");
-    }
-}
-function CanvasWhiteboardComponent_button_7_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r24 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "button", 18);
-        i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_7_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r24); const ctx_r23 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r23.undoLocal()); });
-        i0.ɵɵelement(1, "i", 16);
-        i0.ɵɵtext(2);
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r5 = i0.ɵɵnextContext();
-        i0.ɵɵadvance(1);
-        i0.ɵɵclassMap(ctx_r5.undoButtonClass);
-        i0.ɵɵadvance(1);
-        i0.ɵɵtextInterpolate1(" ", ctx_r5.undoButtonText, " ");
-    }
-}
-function CanvasWhiteboardComponent_button_8_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r26 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "button", 19);
-        i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_8_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r26); const ctx_r25 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r25.redoLocal()); });
-        i0.ɵɵelement(1, "i", 16);
-        i0.ɵɵtext(2);
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r6 = i0.ɵɵnextContext();
-        i0.ɵɵadvance(1);
-        i0.ɵɵclassMap(ctx_r6.redoButtonClass);
-        i0.ɵɵadvance(1);
-        i0.ɵɵtextInterpolate1(" ", ctx_r6.redoButtonText, " ");
-    }
-}
-function CanvasWhiteboardComponent_button_9_Template(rf, ctx) {
-    if (rf & 1) {
-        const _r28 = i0.ɵɵgetCurrentView();
-        i0.ɵɵelementStart(0, "button", 20);
-        i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_9_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r28); const ctx_r27 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r27.saveLocal()); });
-        i0.ɵɵelement(1, "i", 16);
-        i0.ɵɵtext(2);
-        i0.ɵɵelementEnd();
-    }
-    if (rf & 2) {
-        const ctx_r7 = i0.ɵɵnextContext();
-        i0.ɵɵadvance(1);
-        i0.ɵɵclassMap(ctx_r7.saveDataButtonClass);
-        i0.ɵɵadvance(1);
-        i0.ɵɵtextInterpolate1(" ", ctx_r7.saveDataButtonText, " ");
-    }
-}
+function CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template(rf, ctx) { if (rf & 1) {
+    const _r11 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "canvas-whiteboard-shape-selector", 13);
+    i0.ɵɵlistener("onToggleShapeSelector", function CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template_canvas_whiteboard_shape_selector_onToggleShapeSelector_0_listener($event) { i0.ɵɵrestoreView(_r11); const ctx_r10 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r10.toggleShapeSelector($event)); })("onShapeSelected", function CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template_canvas_whiteboard_shape_selector_onShapeSelected_0_listener($event) { i0.ɵɵrestoreView(_r11); const ctx_r12 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r12.selectShape($event)); });
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r0 = i0.ɵɵnextContext();
+    i0.ɵɵproperty("showShapeSelector", ctx_r0.showShapeSelector)("selectedShapeConstructor", ctx_r0.selectedShapeConstructor)("shapeOptions", ctx_r0.generateShapePreviewOptions());
+} }
+function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template(rf, ctx) { if (rf & 1) {
+    const _r14 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "canvas-whiteboard-colorpicker", 14);
+    i0.ɵɵlistener("onToggleColorPicker", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template_canvas_whiteboard_colorpicker_onToggleColorPicker_0_listener($event) { i0.ɵɵrestoreView(_r14); const ctx_r13 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r13.toggleFillColorPicker($event)); })("onColorSelected", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template_canvas_whiteboard_colorpicker_onColorSelected_0_listener($event) { i0.ɵɵrestoreView(_r14); const ctx_r15 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r15.changeFillColor($event)); });
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r1 = i0.ɵɵnextContext();
+    i0.ɵɵproperty("previewText", ctx_r1.fillColorPickerText)("showColorPicker", ctx_r1.showFillColorPicker)("selectedColor", ctx_r1.fillColor);
+} }
+function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_4_Template(rf, ctx) { if (rf & 1) {
+    const _r17 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "canvas-whiteboard-colorpicker", 14);
+    i0.ɵɵlistener("onToggleColorPicker", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_4_Template_canvas_whiteboard_colorpicker_onToggleColorPicker_0_listener($event) { i0.ɵɵrestoreView(_r17); const ctx_r16 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r16.toggleStrokeColorPicker($event)); })("onColorSelected", function CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_4_Template_canvas_whiteboard_colorpicker_onColorSelected_0_listener($event) { i0.ɵɵrestoreView(_r17); const ctx_r18 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r18.changeStrokeColor($event)); });
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r2 = i0.ɵɵnextContext();
+    i0.ɵɵproperty("previewText", ctx_r2.strokeColorPickerText)("showColorPicker", ctx_r2.showStrokeColorPicker)("selectedColor", ctx_r2.strokeColor);
+} }
+function CanvasWhiteboardComponent_button_5_Template(rf, ctx) { if (rf & 1) {
+    const _r20 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "button", 15);
+    i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_5_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r20); const ctx_r19 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r19.toggleDrawingEnabled()); });
+    i0.ɵɵelement(1, "i", 16);
+    i0.ɵɵtext(2);
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r3 = i0.ɵɵnextContext();
+    i0.ɵɵclassProp("canvas_whiteboard_button-draw_animated", ctx_r3.getDrawingEnabled());
+    i0.ɵɵadvance(1);
+    i0.ɵɵclassMap(ctx_r3.drawButtonClass);
+    i0.ɵɵadvance(1);
+    i0.ɵɵtextInterpolate1(" ", ctx_r3.drawButtonText, " ");
+} }
+function CanvasWhiteboardComponent_button_6_Template(rf, ctx) { if (rf & 1) {
+    const _r22 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "button", 17);
+    i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_6_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r22); const ctx_r21 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r21.clearCanvasLocal()); });
+    i0.ɵɵelement(1, "i", 16);
+    i0.ɵɵtext(2);
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r4 = i0.ɵɵnextContext();
+    i0.ɵɵadvance(1);
+    i0.ɵɵclassMap(ctx_r4.clearButtonClass);
+    i0.ɵɵadvance(1);
+    i0.ɵɵtextInterpolate1(" ", ctx_r4.clearButtonText, " ");
+} }
+function CanvasWhiteboardComponent_button_7_Template(rf, ctx) { if (rf & 1) {
+    const _r24 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "button", 18);
+    i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_7_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r24); const ctx_r23 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r23.undoLocal()); });
+    i0.ɵɵelement(1, "i", 16);
+    i0.ɵɵtext(2);
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r5 = i0.ɵɵnextContext();
+    i0.ɵɵadvance(1);
+    i0.ɵɵclassMap(ctx_r5.undoButtonClass);
+    i0.ɵɵadvance(1);
+    i0.ɵɵtextInterpolate1(" ", ctx_r5.undoButtonText, " ");
+} }
+function CanvasWhiteboardComponent_button_8_Template(rf, ctx) { if (rf & 1) {
+    const _r26 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "button", 19);
+    i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_8_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r26); const ctx_r25 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r25.redoLocal()); });
+    i0.ɵɵelement(1, "i", 16);
+    i0.ɵɵtext(2);
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r6 = i0.ɵɵnextContext();
+    i0.ɵɵadvance(1);
+    i0.ɵɵclassMap(ctx_r6.redoButtonClass);
+    i0.ɵɵadvance(1);
+    i0.ɵɵtextInterpolate1(" ", ctx_r6.redoButtonText, " ");
+} }
+function CanvasWhiteboardComponent_button_9_Template(rf, ctx) { if (rf & 1) {
+    const _r28 = i0.ɵɵgetCurrentView();
+    i0.ɵɵelementStart(0, "button", 20);
+    i0.ɵɵlistener("click", function CanvasWhiteboardComponent_button_9_Template_button_click_0_listener() { i0.ɵɵrestoreView(_r28); const ctx_r27 = i0.ɵɵnextContext(); return i0.ɵɵresetView(ctx_r27.saveLocal()); });
+    i0.ɵɵelement(1, "i", 16);
+    i0.ɵɵtext(2);
+    i0.ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r7 = i0.ɵɵnextContext();
+    i0.ɵɵadvance(1);
+    i0.ɵɵclassMap(ctx_r7.saveDataButtonClass);
+    i0.ɵɵadvance(1);
+    i0.ɵɵtextInterpolate1(" ", ctx_r7.saveDataButtonText, " ");
+} }
 class CanvasWhiteboardComponent {
     set imageUrl(imageUrl) {
         this._imageUrl = imageUrl;
@@ -1820,20 +1852,15 @@ class CanvasWhiteboardComponent {
         this._unsubscribe(this._registeredShapesSubscription);
         this._canvasWhiteboardServiceSubscriptions.forEach(subscription => this._unsubscribe(subscription));
     }
-}
-CanvasWhiteboardComponent.ɵfac = function CanvasWhiteboardComponent_Factory(t) { return new (t || CanvasWhiteboardComponent)(i0.ɵɵdirectiveInject(i0.NgZone), i0.ɵɵdirectiveInject(i0.ChangeDetectorRef), i0.ɵɵdirectiveInject(CanvasWhiteboardService), i0.ɵɵdirectiveInject(CanvasWhiteboardShapeService)); };
-CanvasWhiteboardComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardComponent, selectors: [["canvas-whiteboard"]], viewQuery: function CanvasWhiteboardComponent_Query(rf, ctx) {
-        if (rf & 1) {
+    static { this.ɵfac = function CanvasWhiteboardComponent_Factory(t) { return new (t || CanvasWhiteboardComponent)(i0.ɵɵdirectiveInject(i0.NgZone), i0.ɵɵdirectiveInject(i0.ChangeDetectorRef), i0.ɵɵdirectiveInject(CanvasWhiteboardService), i0.ɵɵdirectiveInject(CanvasWhiteboardShapeService)); }; }
+    static { this.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: CanvasWhiteboardComponent, selectors: [["canvas-whiteboard"]], viewQuery: function CanvasWhiteboardComponent_Query(rf, ctx) { if (rf & 1) {
             i0.ɵɵviewQuery(_c0, 7);
             i0.ɵɵviewQuery(_c1, 7);
-        }
-        if (rf & 2) {
+        } if (rf & 2) {
             let _t;
             i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx.canvas = _t.first);
             i0.ɵɵqueryRefresh(_t = i0.ɵɵloadQuery()) && (ctx._incompleteShapesCanvas = _t.first);
-        }
-    }, inputs: { options: "options", batchUpdateTimeoutDuration: "batchUpdateTimeoutDuration", imageUrl: "imageUrl", aspectRatio: "aspectRatio", drawButtonClass: "drawButtonClass", clearButtonClass: "clearButtonClass", undoButtonClass: "undoButtonClass", redoButtonClass: "redoButtonClass", saveDataButtonClass: "saveDataButtonClass", drawButtonText: "drawButtonText", clearButtonText: "clearButtonText", undoButtonText: "undoButtonText", redoButtonText: "redoButtonText", saveDataButtonText: "saveDataButtonText", strokeColorPickerText: "strokeColorPickerText", fillColorPickerText: "fillColorPickerText", drawButtonEnabled: "drawButtonEnabled", clearButtonEnabled: "clearButtonEnabled", undoButtonEnabled: "undoButtonEnabled", redoButtonEnabled: "redoButtonEnabled", saveDataButtonEnabled: "saveDataButtonEnabled", shouldDownloadDrawing: "shouldDownloadDrawing", colorPickerEnabled: "colorPickerEnabled", strokeColorPickerEnabled: "strokeColorPickerEnabled", fillColorPickerEnabled: "fillColorPickerEnabled", lineWidth: "lineWidth", strokeColor: "strokeColor", startingColor: "startingColor", scaleFactor: "scaleFactor", drawingEnabled: "drawingEnabled", showStrokeColorPicker: "showStrokeColorPicker", showFillColorPicker: "showFillColorPicker", downloadedFileName: "downloadedFileName", lineJoin: "lineJoin", lineCap: "lineCap", shapeSelectorEnabled: "shapeSelectorEnabled", showShapeSelector: "showShapeSelector", fillColor: "fillColor" }, outputs: { onClear: "onClear", onUndo: "onUndo", onRedo: "onRedo", onBatchUpdate: "onBatchUpdate", onImageLoaded: "onImageLoaded", onSave: "onSave" }, features: [i0.ɵɵNgOnChangesFeature], decls: 14, vars: 8, consts: [[1, "canvas_wrapper_div"], [1, "canvas_whiteboard_buttons"], [3, "showShapeSelector", "selectedShapeConstructor", "shapeOptions", "onToggleShapeSelector", "onShapeSelected", 4, "ngIf"], [3, "previewText", "showColorPicker", "selectedColor", "onToggleColorPicker", "onColorSelected", 4, "ngIf"], ["class", "canvas_whiteboard_button canvas_whiteboard_button-draw", "type", "button", 3, "canvas_whiteboard_button-draw_animated", "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-clear", 3, "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-undo", 3, "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-redo", 3, "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-save", 3, "click", 4, "ngIf"], [1, "canvas_whiteboard"], ["canvas", ""], [1, "incomplete_shapes_canvas_whiteboard", 3, "mousedown", "mouseup", "mousemove", "mouseout", "touchstart", "touchmove", "touchend", "touchcancel"], ["incompleteShapesCanvas", ""], [3, "showShapeSelector", "selectedShapeConstructor", "shapeOptions", "onToggleShapeSelector", "onShapeSelected"], [3, "previewText", "showColorPicker", "selectedColor", "onToggleColorPicker", "onColorSelected"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-draw", 3, "click"], ["aria-hidden", "true"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-clear", 3, "click"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-undo", 3, "click"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-redo", 3, "click"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-save", 3, "click"]], template: function CanvasWhiteboardComponent_Template(rf, ctx) {
-        if (rf & 1) {
+        } }, inputs: { options: "options", batchUpdateTimeoutDuration: "batchUpdateTimeoutDuration", imageUrl: "imageUrl", aspectRatio: "aspectRatio", drawButtonClass: "drawButtonClass", clearButtonClass: "clearButtonClass", undoButtonClass: "undoButtonClass", redoButtonClass: "redoButtonClass", saveDataButtonClass: "saveDataButtonClass", drawButtonText: "drawButtonText", clearButtonText: "clearButtonText", undoButtonText: "undoButtonText", redoButtonText: "redoButtonText", saveDataButtonText: "saveDataButtonText", strokeColorPickerText: "strokeColorPickerText", fillColorPickerText: "fillColorPickerText", drawButtonEnabled: "drawButtonEnabled", clearButtonEnabled: "clearButtonEnabled", undoButtonEnabled: "undoButtonEnabled", redoButtonEnabled: "redoButtonEnabled", saveDataButtonEnabled: "saveDataButtonEnabled", shouldDownloadDrawing: "shouldDownloadDrawing", colorPickerEnabled: "colorPickerEnabled", strokeColorPickerEnabled: "strokeColorPickerEnabled", fillColorPickerEnabled: "fillColorPickerEnabled", lineWidth: "lineWidth", strokeColor: "strokeColor", startingColor: "startingColor", scaleFactor: "scaleFactor", drawingEnabled: "drawingEnabled", showStrokeColorPicker: "showStrokeColorPicker", showFillColorPicker: "showFillColorPicker", downloadedFileName: "downloadedFileName", lineJoin: "lineJoin", lineCap: "lineCap", shapeSelectorEnabled: "shapeSelectorEnabled", showShapeSelector: "showShapeSelector", fillColor: "fillColor" }, outputs: { onClear: "onClear", onUndo: "onUndo", onRedo: "onRedo", onBatchUpdate: "onBatchUpdate", onImageLoaded: "onImageLoaded", onSave: "onSave" }, features: [i0.ɵɵNgOnChangesFeature], decls: 14, vars: 8, consts: [[1, "canvas_wrapper_div"], [1, "canvas_whiteboard_buttons"], [3, "showShapeSelector", "selectedShapeConstructor", "shapeOptions", "onToggleShapeSelector", "onShapeSelected", 4, "ngIf"], [3, "previewText", "showColorPicker", "selectedColor", "onToggleColorPicker", "onColorSelected", 4, "ngIf"], ["class", "canvas_whiteboard_button canvas_whiteboard_button-draw", "type", "button", 3, "canvas_whiteboard_button-draw_animated", "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-clear", 3, "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-undo", 3, "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-redo", 3, "click", 4, "ngIf"], ["type", "button", "class", "canvas_whiteboard_button canvas_whiteboard_button-save", 3, "click", 4, "ngIf"], [1, "canvas_whiteboard"], ["canvas", ""], [1, "incomplete_shapes_canvas_whiteboard", 3, "mousedown", "mouseup", "mousemove", "mouseout", "touchstart", "touchmove", "touchend", "touchcancel"], ["incompleteShapesCanvas", ""], [3, "showShapeSelector", "selectedShapeConstructor", "shapeOptions", "onToggleShapeSelector", "onShapeSelected"], [3, "previewText", "showColorPicker", "selectedColor", "onToggleColorPicker", "onColorSelected"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-draw", 3, "click"], ["aria-hidden", "true"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-clear", 3, "click"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-undo", 3, "click"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-redo", 3, "click"], ["type", "button", 1, "canvas_whiteboard_button", "canvas_whiteboard_button-save", 3, "click"]], template: function CanvasWhiteboardComponent_Template(rf, ctx) { if (rf & 1) {
             i0.ɵɵelementStart(0, "div", 0)(1, "div", 1);
             i0.ɵɵtemplate(2, CanvasWhiteboardComponent_canvas_whiteboard_shape_selector_2_Template, 1, 3, "canvas-whiteboard-shape-selector", 2);
             i0.ɵɵtemplate(3, CanvasWhiteboardComponent_canvas_whiteboard_colorpicker_3_Template, 1, 3, "canvas-whiteboard-colorpicker", 3);
@@ -1848,8 +1875,7 @@ CanvasWhiteboardComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: C
             i0.ɵɵelementStart(12, "canvas", 11, 12);
             i0.ɵɵlistener("mousedown", function CanvasWhiteboardComponent_Template_canvas_mousedown_12_listener($event) { return ctx.canvasUserEvents($event); })("mouseup", function CanvasWhiteboardComponent_Template_canvas_mouseup_12_listener($event) { return ctx.canvasUserEvents($event); })("mousemove", function CanvasWhiteboardComponent_Template_canvas_mousemove_12_listener($event) { return ctx.canvasUserEvents($event); })("mouseout", function CanvasWhiteboardComponent_Template_canvas_mouseout_12_listener($event) { return ctx.canvasUserEvents($event); })("touchstart", function CanvasWhiteboardComponent_Template_canvas_touchstart_12_listener($event) { return ctx.canvasUserEvents($event); })("touchmove", function CanvasWhiteboardComponent_Template_canvas_touchmove_12_listener($event) { return ctx.canvasUserEvents($event); })("touchend", function CanvasWhiteboardComponent_Template_canvas_touchend_12_listener($event) { return ctx.canvasUserEvents($event); })("touchcancel", function CanvasWhiteboardComponent_Template_canvas_touchcancel_12_listener($event) { return ctx.canvasUserEvents($event); });
             i0.ɵɵelementEnd()();
-        }
-        if (rf & 2) {
+        } if (rf & 2) {
             i0.ɵɵadvance(2);
             i0.ɵɵproperty("ngIf", ctx.shapeSelectorEnabled);
             i0.ɵɵadvance(1);
@@ -1866,12 +1892,11 @@ CanvasWhiteboardComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: C
             i0.ɵɵproperty("ngIf", ctx.redoButtonEnabled);
             i0.ɵɵadvance(1);
             i0.ɵɵproperty("ngIf", ctx.saveDataButtonEnabled);
-        }
-    }, dependencies: [i2.NgIf, CanvasWhiteboardColorPickerComponent, CanvasWhiteboardShapeSelectorComponent], styles: [".canvas_whiteboard_button[_ngcontent-%COMP%]{display:inline-block;outline:0px;padding-top:7px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.canvas_whiteboard_buttons[_ngcontent-%COMP%]{z-index:3}@media (max-width: 400px){.canvas_whiteboard_buttons[_ngcontent-%COMP%]{position:absolute;top:0;width:100%;text-align:center}}@media (min-width: 401px){.canvas_whiteboard_buttons[_ngcontent-%COMP%]{position:absolute;right:0%;color:#fff}}.canvas_whiteboard_buttons[_ngcontent-%COMP%]{padding:5px}.canvas_whiteboard_buttons[_ngcontent-%COMP%] > button[_ngcontent-%COMP%]{margin:5px}.canvas_whiteboard_button-draw_animated[_ngcontent-%COMP%]{-webkit-animation:_ngcontent-%COMP%_pulsate 1s ease-out;-webkit-animation-iteration-count:infinite}@keyframes _ngcontent-%COMP%_pulsate{0%{-webkit-transform:scale(.1,.1);opacity:0}50%{opacity:1}to{-webkit-transform:scale(1.2,1.2);opacity:0}}.canvas_wrapper_div[_ngcontent-%COMP%]{width:100%;height:100%;border:.5px solid #e2e2e2}.canvas_whiteboard_button-clear[_ngcontent-%COMP%]{padding-top:5px}.canvas_whiteboard[_ngcontent-%COMP%]{position:absolute;z-index:1}.incomplete_shapes_canvas_whiteboard[_ngcontent-%COMP%]{position:absolute;z-index:2}"] });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardComponent, [{
-            type: Component,
-            args: [{ selector: 'canvas-whiteboard', template: `
+        } }, dependencies: [i2.NgIf, CanvasWhiteboardColorPickerComponent, CanvasWhiteboardShapeSelectorComponent], styles: [".canvas_whiteboard_button[_ngcontent-%COMP%]{display:inline-block;outline:0px;padding-top:7px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.canvas_whiteboard_buttons[_ngcontent-%COMP%]{z-index:3}@media (max-width: 400px){.canvas_whiteboard_buttons[_ngcontent-%COMP%]{position:absolute;top:0;width:100%;text-align:center}}@media (min-width: 401px){.canvas_whiteboard_buttons[_ngcontent-%COMP%]{position:absolute;right:0%;color:#fff}}.canvas_whiteboard_buttons[_ngcontent-%COMP%]{padding:5px}.canvas_whiteboard_buttons[_ngcontent-%COMP%] > button[_ngcontent-%COMP%]{margin:5px}.canvas_whiteboard_button-draw_animated[_ngcontent-%COMP%]{-webkit-animation:_ngcontent-%COMP%_pulsate 1s ease-out;-webkit-animation-iteration-count:infinite}@keyframes _ngcontent-%COMP%_pulsate{0%{-webkit-transform:scale(.1,.1);opacity:0}50%{opacity:1}to{-webkit-transform:scale(1.2,1.2);opacity:0}}.canvas_wrapper_div[_ngcontent-%COMP%]{width:100%;height:100%;border:.5px solid #e2e2e2}.canvas_whiteboard_button-clear[_ngcontent-%COMP%]{padding-top:5px}.canvas_whiteboard[_ngcontent-%COMP%]{position:absolute;z-index:1}.incomplete_shapes_canvas_whiteboard[_ngcontent-%COMP%]{position:absolute;z-index:2}"] }); }
+}
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardComponent, [{
+        type: Component,
+        args: [{ selector: 'canvas-whiteboard', template: `
     <div class="canvas_wrapper_div">
       <div class="canvas_whiteboard_buttons">
         <canvas-whiteboard-shape-selector *ngIf="shapeSelectorEnabled"
@@ -1931,138 +1956,133 @@ CanvasWhiteboardComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: C
               (touchend)="canvasUserEvents($event)" (touchcancel)="canvasUserEvents($event)"></canvas>
     </div>
   `, styles: [".canvas_whiteboard_button{display:inline-block;outline:0px;padding-top:7px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.canvas_whiteboard_buttons{z-index:3}@media (max-width: 400px){.canvas_whiteboard_buttons{position:absolute;top:0;width:100%;text-align:center}}@media (min-width: 401px){.canvas_whiteboard_buttons{position:absolute;right:0%;color:#fff}}.canvas_whiteboard_buttons{padding:5px}.canvas_whiteboard_buttons>button{margin:5px}.canvas_whiteboard_button-draw_animated{-webkit-animation:pulsate 1s ease-out;-webkit-animation-iteration-count:infinite}@keyframes pulsate{0%{-webkit-transform:scale(.1,.1);opacity:0}50%{opacity:1}to{-webkit-transform:scale(1.2,1.2);opacity:0}}.canvas_wrapper_div{width:100%;height:100%;border:.5px solid #e2e2e2}.canvas_whiteboard_button-clear{padding-top:5px}.canvas_whiteboard{position:absolute;z-index:1}.incomplete_shapes_canvas_whiteboard{position:absolute;z-index:2}\n"] }]
-        }], function () { return [{ type: i0.NgZone }, { type: i0.ChangeDetectorRef }, { type: CanvasWhiteboardService }, { type: CanvasWhiteboardShapeService }]; }, { options: [{
-                type: Input
-            }], batchUpdateTimeoutDuration: [{
-                type: Input
-            }], imageUrl: [{
-                type: Input
-            }], aspectRatio: [{
-                type: Input
-            }], drawButtonClass: [{
-                type: Input
-            }], clearButtonClass: [{
-                type: Input
-            }], undoButtonClass: [{
-                type: Input
-            }], redoButtonClass: [{
-                type: Input
-            }], saveDataButtonClass: [{
-                type: Input
-            }], drawButtonText: [{
-                type: Input
-            }], clearButtonText: [{
-                type: Input
-            }], undoButtonText: [{
-                type: Input
-            }], redoButtonText: [{
-                type: Input
-            }], saveDataButtonText: [{
-                type: Input
-            }], strokeColorPickerText: [{
-                type: Input
-            }], fillColorPickerText: [{
-                type: Input
-            }], drawButtonEnabled: [{
-                type: Input
-            }], clearButtonEnabled: [{
-                type: Input
-            }], undoButtonEnabled: [{
-                type: Input
-            }], redoButtonEnabled: [{
-                type: Input
-            }], saveDataButtonEnabled: [{
-                type: Input
-            }], shouldDownloadDrawing: [{
-                type: Input
-            }], colorPickerEnabled: [{
-                type: Input
-            }], strokeColorPickerEnabled: [{
-                type: Input
-            }], fillColorPickerEnabled: [{
-                type: Input
-            }], lineWidth: [{
-                type: Input
-            }], strokeColor: [{
-                type: Input
-            }], startingColor: [{
-                type: Input
-            }], scaleFactor: [{
-                type: Input
-            }], drawingEnabled: [{
-                type: Input
-            }], showStrokeColorPicker: [{
-                type: Input
-            }], showFillColorPicker: [{
-                type: Input
-            }], downloadedFileName: [{
-                type: Input
-            }], lineJoin: [{
-                type: Input
-            }], lineCap: [{
-                type: Input
-            }], shapeSelectorEnabled: [{
-                type: Input
-            }], showShapeSelector: [{
-                type: Input
-            }], fillColor: [{
-                type: Input
-            }], onClear: [{
-                type: Output
-            }], onUndo: [{
-                type: Output
-            }], onRedo: [{
-                type: Output
-            }], onBatchUpdate: [{
-                type: Output
-            }], onImageLoaded: [{
-                type: Output
-            }], onSave: [{
-                type: Output
-            }], canvas: [{
-                type: ViewChild,
-                args: ['canvas', { static: true }]
-            }], _incompleteShapesCanvas: [{
-                type: ViewChild,
-                args: ['incompleteShapesCanvas', { static: true }]
-            }] });
-})();
+    }], function () { return [{ type: i0.NgZone }, { type: i0.ChangeDetectorRef }, { type: CanvasWhiteboardService }, { type: CanvasWhiteboardShapeService }]; }, { options: [{
+            type: Input
+        }], batchUpdateTimeoutDuration: [{
+            type: Input
+        }], imageUrl: [{
+            type: Input
+        }], aspectRatio: [{
+            type: Input
+        }], drawButtonClass: [{
+            type: Input
+        }], clearButtonClass: [{
+            type: Input
+        }], undoButtonClass: [{
+            type: Input
+        }], redoButtonClass: [{
+            type: Input
+        }], saveDataButtonClass: [{
+            type: Input
+        }], drawButtonText: [{
+            type: Input
+        }], clearButtonText: [{
+            type: Input
+        }], undoButtonText: [{
+            type: Input
+        }], redoButtonText: [{
+            type: Input
+        }], saveDataButtonText: [{
+            type: Input
+        }], strokeColorPickerText: [{
+            type: Input
+        }], fillColorPickerText: [{
+            type: Input
+        }], drawButtonEnabled: [{
+            type: Input
+        }], clearButtonEnabled: [{
+            type: Input
+        }], undoButtonEnabled: [{
+            type: Input
+        }], redoButtonEnabled: [{
+            type: Input
+        }], saveDataButtonEnabled: [{
+            type: Input
+        }], shouldDownloadDrawing: [{
+            type: Input
+        }], colorPickerEnabled: [{
+            type: Input
+        }], strokeColorPickerEnabled: [{
+            type: Input
+        }], fillColorPickerEnabled: [{
+            type: Input
+        }], lineWidth: [{
+            type: Input
+        }], strokeColor: [{
+            type: Input
+        }], startingColor: [{
+            type: Input
+        }], scaleFactor: [{
+            type: Input
+        }], drawingEnabled: [{
+            type: Input
+        }], showStrokeColorPicker: [{
+            type: Input
+        }], showFillColorPicker: [{
+            type: Input
+        }], downloadedFileName: [{
+            type: Input
+        }], lineJoin: [{
+            type: Input
+        }], lineCap: [{
+            type: Input
+        }], shapeSelectorEnabled: [{
+            type: Input
+        }], showShapeSelector: [{
+            type: Input
+        }], fillColor: [{
+            type: Input
+        }], onClear: [{
+            type: Output
+        }], onUndo: [{
+            type: Output
+        }], onRedo: [{
+            type: Output
+        }], onBatchUpdate: [{
+            type: Output
+        }], onImageLoaded: [{
+            type: Output
+        }], onSave: [{
+            type: Output
+        }], canvas: [{
+            type: ViewChild,
+            args: ['canvas', { static: true }]
+        }], _incompleteShapesCanvas: [{
+            type: ViewChild,
+            args: ['incompleteShapesCanvas', { static: true }]
+        }] }); })();
 
 class CanvasWhiteboardModule {
+    static { this.ɵfac = function CanvasWhiteboardModule_Factory(t) { return new (t || CanvasWhiteboardModule)(); }; }
+    static { this.ɵmod = /*@__PURE__*/ i0.ɵɵdefineNgModule({ type: CanvasWhiteboardModule }); }
+    static { this.ɵinj = /*@__PURE__*/ i0.ɵɵdefineInjector({ providers: [
+            CanvasWhiteboardService,
+            CanvasWhiteboardShapeService
+        ], imports: [CommonModule] }); }
 }
-CanvasWhiteboardModule.ɵfac = function CanvasWhiteboardModule_Factory(t) { return new (t || CanvasWhiteboardModule)(); };
-CanvasWhiteboardModule.ɵmod = /*@__PURE__*/ i0.ɵɵdefineNgModule({ type: CanvasWhiteboardModule });
-CanvasWhiteboardModule.ɵinj = /*@__PURE__*/ i0.ɵɵdefineInjector({ providers: [
-        CanvasWhiteboardService,
-        CanvasWhiteboardShapeService
-    ], imports: [CommonModule] });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardModule, [{
-            type: NgModule,
-            args: [{
-                    declarations: [
-                        CanvasWhiteboardComponent,
-                        CanvasWhiteboardColorPickerComponent,
-                        CanvasWhiteboardShapeSelectorComponent,
-                        CanvasWhiteboardShapePreviewComponent
-                    ],
-                    imports: [
-                        CommonModule
-                    ],
-                    providers: [
-                        CanvasWhiteboardService,
-                        CanvasWhiteboardShapeService
-                    ],
-                    exports: [CanvasWhiteboardComponent]
-                }]
-        }], null, null);
-})();
-(function () {
-    (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(CanvasWhiteboardModule, { declarations: [CanvasWhiteboardComponent,
-            CanvasWhiteboardColorPickerComponent,
-            CanvasWhiteboardShapeSelectorComponent,
-            CanvasWhiteboardShapePreviewComponent], imports: [CommonModule], exports: [CanvasWhiteboardComponent] });
-})();
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(CanvasWhiteboardModule, [{
+        type: NgModule,
+        args: [{
+                declarations: [
+                    CanvasWhiteboardComponent,
+                    CanvasWhiteboardColorPickerComponent,
+                    CanvasWhiteboardShapeSelectorComponent,
+                    CanvasWhiteboardShapePreviewComponent
+                ],
+                imports: [
+                    CommonModule
+                ],
+                providers: [
+                    CanvasWhiteboardService,
+                    CanvasWhiteboardShapeService
+                ],
+                exports: [CanvasWhiteboardComponent]
+            }]
+    }], null, null); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(CanvasWhiteboardModule, { declarations: [CanvasWhiteboardComponent,
+        CanvasWhiteboardColorPickerComponent,
+        CanvasWhiteboardShapeSelectorComponent,
+        CanvasWhiteboardShapePreviewComponent], imports: [CommonModule], exports: [CanvasWhiteboardComponent] }); })();
 
 /*
  * Public API Surface of ng2-canvas-whiteboard
